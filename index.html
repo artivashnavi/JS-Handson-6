@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center><h1>JS Handson-6</h1></center>
+    <pre>
+    Ques.1  PrepBuddy has an analog clock which consists of two hands one for hour and another for minute. She wants to calculate the shorter angle formed between hour and minute hand at any given time.
+    Ans.
+    function min(x, y)
+   {
+    return (x < y)? x: y;
+     
+    }
+   var Minimal_Angle = (h, m) => 
+    {
+   
+    if (h <0 || m < 0 || h >12 || m > 60)
+        console.log("Wrong input");
+ 
+    if (h === 12)
+    h = 0;
+    if (m === 60)
+    {
+    m = 0;
+    h += 1;
+    if(h>12)
+        h = h-12;
+    }
+ 
+    let hour_angle = 0.5 * (h * 60 + m);
+    let minute_angle = 6 * m;
+    let angle = Math.abs(hour_angle - minute_angle);
+ 
+    
+    angle = min(360 - angle, angle);
+ 
+    return angle;   
+};
+
+Sample Input 1
+5 30
+
+Sample Output 1
+15
+
+Sample Input 2
+6 0
+
+Sample Output 2
+180
+
+
+Ques.2 Write a program which takes an year N as input from the user and find out whether the given year is a Leap Year or not.
+Ans. 
+var Check_Leap = (year) => 
+{
+   if (( year % 4===0) && ( year % 100!==0) || ( year % 400===0))
+   {
+        return   "Leap Year";
+    } else {
+       return   "Non Leap Year";
+    }
+  
+
+};
+Sample Input 1
+1900
+
+Sample Output 1
+Non Leap Year
+
+Sample Input 2
+2012
+
+Sample Output 2
+Leap Year
+
+Ques.3 Have you heard of Perfect numbers? If not let me tell you what is it, Perfect Numbers are integers that are equal to the sum of all its divisors except that number itself.
+
+Now, You are given an integer 
+N
+, write a program to check whether the given number is a Perfect Number or not.
+Ans.
+var Perfect_Check = (N) => 
+{
+     sum = 1;
+ 
+    
+    for (let i=2; i*i<=N; i++)
+    {
+        if (N%i===0)
+        {
+            if(i*i!=N)
+                sum = sum + i + N/i;
+            else
+                sum=sum+i;
+        }
+    }
+   
+    if (sum === N && N !== 1)
+    {
+        return "NO";
+    }
+    else{
+    return "YES";   
+    }    
+};
+
+Sample Input 1
+1
+
+Sample Output 1
+YES
+
+Sample Input 2
+96345
+
+Sample Output 2
+NO
+
+Ques.4  Write a program which takes a numebr 
+N
+ as input from the user and You need to reverse the number.
+ Ans.
+  
+var Reverse_Number = (N) => 
+{
+     const R_N =  parseFloat(N.toString().split('').
+     reverse().join('')) * Math.sign(N)
+     return R_N;
+
+};
+ 
+
+
+Sample Input 1
+1900
+
+Sample Output 1
+91
+
+Sample Input 2
+2012
+
+Sample Output 2
+2102
+
+Ques. 5 You are given two strings 
+S
+1
+ and 
+S
+2
+, you need to check whether the string S1 is a substring of string S2 or not.
+Ans.
+
+var Substring_Check = (S1, S2) => 
+{
+    var res = S1.includes(S2);
+    if(res === true )
+    {
+      return "YES";
+    }
+    
+    else{
+      return "NO";
+    }
+};
+ 
+
+
+Sample Input 1
+Hii this is Prepbuddy
+Prepbuddy
+
+Sample Output 1
+YES
+
+Sample Input 2
+Hii this is Prepbuddy
+Prepbytes
+
+Sample Output 2
+NO
+</pre>
+</body>
+</html>
